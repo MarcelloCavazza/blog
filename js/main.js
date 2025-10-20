@@ -1,12 +1,12 @@
 const themeToggle = document.getElementById('theme-toggle');
 const currentTheme = localStorage.getItem('theme') || 'dark';
-document.body.classList.toggle('dark', currentTheme === 'dark');
+document.body.classList.toggle('light', currentTheme === 'light');
 
 if (themeToggle) {
   themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
   themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    const newTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+    document.body.classList.toggle('light');
+    const newTheme = document.body.classList.contains('light') ? 'light' : 'dark';
     localStorage.setItem('theme', newTheme);
     themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
   });
