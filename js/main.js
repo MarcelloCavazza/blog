@@ -28,7 +28,7 @@ if (container) {
           <h2>${post.title}</h2>
           <p class="date">${post.date}</p>
           <p>${post.description}</p>
-          <a href="post.html?post=${post.slug}">Read more →</a>
+          <a href="post.html?post=${post.slug}">Ler mais →</a>
         </div>
       `;
       container.appendChild(div);
