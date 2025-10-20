@@ -1,6 +1,5 @@
-// ----- Theme Toggle -----
 const themeToggle = document.getElementById('theme-toggle');
-const currentTheme = localStorage.getItem('theme') || 'light';
+const currentTheme = localStorage.getItem('theme') || 'dark';
 document.body.classList.toggle('dark', currentTheme === 'dark');
 
 if (themeToggle) {
@@ -13,13 +12,12 @@ if (themeToggle) {
   });
 }
 
-// ----- Post Listing -----
 const container = document.getElementById('posts-container');
 if (container) {
   const renderPosts = (filter = "") => {
     container.innerHTML = "";
     const filtered = posts.filter(p =>
-      p.title.toLowerCase().includes(filter.toLowerCase())
+      p.title.toLowerCase().includes(filter.toLowerCase()) || p.description.toLowerCase().includes(filter.toLowerCase()) 
     );
     filtered.forEach(post => {
       const div = document.createElement('div');
@@ -39,7 +37,6 @@ if (container) {
 
   renderPosts();
 
-  // ----- Search -----
   document.getElementById('search').addEventListener('input', e => {
     renderPosts(e.target.value);
   });
