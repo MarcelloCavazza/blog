@@ -1,0 +1,46 @@
+// ----- Theme Toggle -----
+const themeToggle = document.getElementById('theme-toggle');
+const currentTheme = localStorage.getItem('theme') || 'light';
+document.body.classList.toggle('dark', currentTheme === 'dark');
+
+if (themeToggle) {
+  themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const newTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+    localStorage.setItem('theme', newTheme);
+    themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  });
+}
+
+// ----- Post Listing -----
+const container = document.getElementById('posts-container');
+if (container) {
+  const renderPosts = (filter = "") => {
+    container.innerHTML = "";
+    const filtered = posts.filter(p =>
+      p.title.toLowerCase().includes(filter.toLowerCase())
+    );
+    filtered.forEach(post => {
+      const div = document.createElement('div');
+      div.className = 'post-card';
+      div.innerHTML = `
+        <img src="${post.image}" alt="${post.title}">
+        <div>
+          <h2>${post.title}</h2>
+          <p class="date">${post.date}</p>
+          <p>${post.description}</p>
+          <a href="post.html?post=${post.slug}">Read more →</a>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+  };
+
+  renderPosts();
+
+  // ----- Search -----
+  document.getElementById('search').addEventListener('input', e => {
+    renderPosts(e.target.value);
+  });
+}
