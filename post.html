@@ -17,7 +17,8 @@
   </article>
 
   <footer>
-    <p>© 2025 My Blog</p>
+    <p>Por Marcello Cavazza</p>
+    <p>Contato: marcellocavazzaoliveira@gmail.com</p>
   </footer>
 
   <script src="js/main.js"></script>
@@ -29,7 +30,7 @@
         .then(res => res.text())
         .then(html => {
           document.getElementById('post-content').innerHTML = html;
-          document.title = document.querySelector('h1').innerText + " | My Blog";
+          document.title = document.querySelector('h1').innerText + " | Blog";
         });
     }
   </script>
