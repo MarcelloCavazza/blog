@@ -23,7 +23,7 @@ if (container) {
       const div = document.createElement('div');
       div.className = 'post-card';
       div.innerHTML = `
-        <img src="${post.image}" alt="${post.title}">
+        ${post.image ? `<img src="${post.image}" alt="${post.title}">` : ''}
         <div>
           <h2>${post.title}</h2>
           <p class="date">${post.date}</p>
